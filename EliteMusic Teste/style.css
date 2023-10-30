@@ -1,0 +1,200 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --bg-main: #191919;
+  --dark-color-bg: #252525;
+  --txt-main: #fff;
+  --txt-sec: #a0a0a0;
+  --btn-main: #007acc;
+  --dark-btn-main: #0b6eb0;
+  --font-title: "Merriweather", serif;
+  --font-text: "Cormorant Garamond", serif;
+  --font-logo: "Boldega Script", cursive;
+  --font-nav: "Kanit", sans-serif;
+}
+@font-face {
+  font-family: "Boldega Script";
+  src: url(fonts/Bodega\ Script.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--txt-main);
+}
+html,
+body {
+  background-color: var(--bg-main);
+  overflow-x: hidden;
+  text-size-adjust: 100%;
+}
+header {
+  background-color: var(--dark-color-bg);
+  padding: 1rem 4rem;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  gap: 1rem;
+}
+nav > ul > li > a {
+  text-decoration: none;
+  font-family: "Kanit";
+  font-size: 1em;
+  letter-spacing: 2px;
+}
+nav > ul > li > a::before {
+  content: " ";
+  display: block;
+  position: relative;
+  height: 0.5px;
+  top: 100%;
+  width: 0;
+  background-color: var(--txt-main);
+  transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+nav > ul > li > a:hover::before {
+  width: 100%;
+}
+nav > ul > li > a:hover {
+  font-size: 1.05rem;
+}
+.banner {
+  background: url(image/banner.png) no-repeat right top;
+  background-size: cover;
+  height: 75dvh;
+  width: 100vw;
+  overflow: hidden;
+}
+.banner::after {
+  content: "EliteMusic";
+  position: relative;
+  top: calc(50% - 15vh);
+  left: 61%;
+  font-size: 15vh;
+  font-family: "Boldega Script";
+}
+
+.title {
+  margin: 1rem auto;
+  font-family: "Merriweather";
+  font-weight: 500;
+  font-size: 2rem;
+}
+.title ul {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+  justify-content: center;
+}
+.title ul li {
+  opacity: 0;
+  animation: slideTop 0.5s cubic-bezier(0.15, -0.9, 0.01, 0.5) forwards;
+  animation-delay: calc(1.3s + 0.2s * var(--i));
+}
+
+/* MAIN */
+
+main {
+  padding: 0 2rem;
+}
+
+/* ABOUT SECTION */
+
+#about {
+  max-width: 65vw;
+  margin: 0 auto;
+  height: 75vh;
+}
+.info-about {
+  display: grid;
+  grid-gap: 0;
+  grid-template-areas:
+  "image texto"
+  "image button"
+  ;
+}
+.info-about p {
+  max-width: 60ch;
+  align-self: flex-end;
+}
+.image {
+  max-width: 50vw;
+  max-height: 50vh;
+  overflow: hidden;
+  margin: 0 1rem 0 0;
+  grid-area: image;
+}
+
+.text {
+  font-family: var(--font-text);
+  font-size: 1.3rem;
+  text-align: justify;
+  grid-area: texto;
+}
+
+.appear {
+  opacity: 0;
+  animation: appear 2.5s cubic-bezier(0.64, -0.18, 0.3, 1.19) forwards;
+  animation-delay: 0.5s;
+}
+.learnMore {
+  width: 10rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10%;
+  background-color: var(--btn-main);
+  font-family: var(--font-nav);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  grid-area: button;
+  justify-self: end;
+  transition: all 0.3s cubic-bezier(0.49, 0.48, 0.08, 1.15);
+}
+.learnMore:hover {
+  background-color: var(--dark-btn-main);
+}
+
+/* ABOUT SECTION */
+/* SERVICES SECTION */
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+.swiper-slide {
+  background-color: var(--dark-color-bg);
+  width: 50%;
+}
+
+/* SERVICES SECTION */
+
+/* KEYFRAMES */
+
+@keyframes slideTop {
+  from {
+    translate: 0 -100%;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
